@@ -16,8 +16,8 @@ Actions:
 A->B: {A,B,Request,K}pk(B) 
 B->A: {|A,s,B,ReqID|}K
 
-A->s:  {| A,s |}pw(A,s) 
-s->B:  { {A,s }inv(pk(s)) }pk(B)
+A->s:  {| A,s,B,ReqID |}pw(A,s) 
+s->B:  { {A,s,B,ReqID }inv(pk(s)) }pk(B)
 
 B->A: {|Request,Data|}K
 
@@ -27,3 +27,4 @@ B authenticates A on Request
 A authenticates B on Data
 Data secret between B,A
 # pw(A,s) guessable secret between A,s
+
