@@ -1,0 +1,5 @@
+Figured to add this just in case:
+
+Basically the MITM attack here happens because of "weak authentication", as OFMC says. B and the server can't check who the message is coming from, and the server doesn't know who to send the message to: it sends to B, but the intruder intercepts, so we add B into the message so the intruder can't pose as B. We also add ReqID as a way to reference the previous conversation between A and B, to avoid information manipulation/loss.
+
+-Dimitrije 
