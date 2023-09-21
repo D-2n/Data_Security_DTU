@@ -1,7 +1,7 @@
 Protocol: AMP
 
 Types: Agent A,s,B;
-       Number Request,ReqID,Data;
+       Number Request,ReqID,Data,Nonce;
        Symmetric_key K;
        Function pk,pw;
 
@@ -16,7 +16,7 @@ Actions:
 A->B: {A,B,Request,K}pk(B) 
 B->A: {|A,s,B,ReqID|}K
 
-A->s:  {| A,s,B,ReqID |}pw(A,s) 
+A->s:  { {| A,s,B,ReqID,Nonce |}pw(A,s)}pk(s) 
 s->B:  { {A,s,B,ReqID }inv(pk(s)) }pk(B)
 
 B->A: {|Request,Data|}K
@@ -26,5 +26,4 @@ Goals:
 B authenticates A on Request
 A authenticates B on Data
 Data secret between B,A
-# pw(A,s) guessable secret between A,s
-
+pw(A,s) guessable secret between A,s
